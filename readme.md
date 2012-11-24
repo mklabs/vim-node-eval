@@ -13,6 +13,11 @@ Assuming you have pathogen installed, simply git clone this repository into one 
 git clone <this_repo> ~/.vim/bundle/vim-node-eval
 ```
 
+Add a mapping to your ~/.vimrc (change the key to suit your taste):
+
+```vim
+noremap <Leadder>b :NodeEval
+```
 
 Usage
 -----
@@ -42,11 +47,24 @@ Assuming in this markdown file, the range of the snippet above is `25,26`.
 
 The result is simply echoed back to the console.
 
-## Clam integration
+## Clam Integration
 
-Unless.. You have [Clam](https://github.com/sjl/clam.vim) installed! Which I
-highly recommend, this is a very handy plugin to execute any kind of shell
-commands.
+[Clam](https://github.com/sjl/clam.vim) is a very handy plugin to execute any
+kind of shell commands.
 
 Turns out that it plays super nicely with `node -pe`, so `:NodeEval` will use
 Clam whenever it detects the `:Clam` command.
+
+The same snippet will use the same window as before, variations will open a new
+one.
+
+## Mapping
+
+The plugin adds `<leader>b` mapping automatically.
+
+You can prevent this and deal with it manually. Add the mapping to your ~/.vimrc:
+
+    let g:node_eval_map_keys = 0
+
+    # change the key to suit your taste
+    noremap <leader>b :NodeEval<CR>

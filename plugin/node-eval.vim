@@ -2,9 +2,17 @@
 " Maintainer:   mklabs
 
 if exists("g:loaded_node_eval") || v:version < 700 || &cp
-  " finish
+  finish
 endif
 let g:loaded_node_eval = 1
+
+if !exists('g:node_eval_map_keys')
+  let g:node_eval_map_keys = 1
+endif
+
+if g:node_eval_map_keys
+  noremap <leader>b :NodeEval<CR>
+endif
 
 function! s:nodeEval() range
   let lines = join(getline(a:firstline, a:lastline), "\n")
